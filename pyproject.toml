@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codex-cmd"
+version = "0.1.0"
+description = "Codex-backed natural-language-to-shell-command helper"
+requires-python = ">=3.9"
+
+[project.scripts]
+cx = "codex_cmd.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

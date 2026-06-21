@@ -25,7 +25,7 @@ Optional local install:
 scripts/install.sh
 ```
 
-The installer creates symlinks. It does not edit your shell startup files.
+The repo-local installer creates symlinks. The bootstrap installer can also update `~/.zshrc` after confirmation.
 
 ## Test Commands
 
@@ -40,6 +40,7 @@ Check shell script syntax:
 ```sh
 zsh -n shell/cx.zsh
 sh -n scripts/install.sh
+sh -n scripts/bootstrap.sh
 ```
 
 Run a real smoke test if you have Codex CLI auth configured:

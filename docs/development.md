@@ -10,6 +10,7 @@ This guide is for contributors who want to understand how `codex-cmd` works inte
 - `src/codex_cmd/cli.py`: argument parsing, prompt construction, Codex invocation, and error handling.
 - `src/codex_cmd/jsonl.py`: extraction of the final assistant message from `codex exec --json` output.
 - `shell/cx.zsh`: zsh ZLE widget that replaces the active prompt buffer.
+- `scripts/bootstrap.sh`: one-line installer entrypoint for public users.
 
 The Python CLI is intentionally small. It delegates model access and authentication to the installed Codex CLI.
 
@@ -92,6 +93,12 @@ git grep -n -I -E '(/Users/|auth\.json|OPENAI_API_KEY|CODEX_API_KEY|token|secret
 ```
 
 Review matches manually. Some words, such as `input_tokens` in tests, may be benign.
+
+Installer changes should also pass:
+
+```sh
+sh -n scripts/bootstrap.sh
+```
 
 ## Public History Hygiene
 

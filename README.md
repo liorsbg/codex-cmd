@@ -21,7 +21,21 @@ Requirements:
 - `codex` on `PATH`
 - `codex login` completed with ChatGPT/Codex subscription auth
 
-Install from GitHub:
+One-line install:
+
+```sh
+/bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/liorsbg/codex-cmd/main/scripts/bootstrap.sh)"
+```
+
+The installer checks for `git`, `python3`, `zsh`, and `codex`, clones the repo into `~/.local/share/codex-cmd`, installs symlinks, and asks before updating `~/.zshrc`.
+
+For a non-interactive install that updates `~/.zshrc` automatically:
+
+```sh
+/bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/liorsbg/codex-cmd/main/scripts/bootstrap.sh)" -- --yes
+```
+
+Manual install:
 
 ```sh
 git clone https://github.com/liorsbg/codex-cmd.git ~/.local/share/codex-cmd
@@ -157,6 +171,16 @@ Check that `~/.local/bin` is on `PATH` in the failing terminal:
 
 ```sh
 command -v cx
+```
+
+If it is missing, rerun the bootstrap installer and allow the `~/.zshrc` update, or add this block manually:
+
+```sh
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+source "$HOME/.config/codex-cmd/cx.zsh"
 ```
 
 Output is slow
